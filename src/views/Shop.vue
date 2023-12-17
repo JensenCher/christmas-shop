@@ -1,199 +1,166 @@
 <template>
-  <div
-    class="mb-20 mt-10 flex items-center justify-center bg-[#FFFFFF] px-10 text-[#181028]"
-  >
-    <div class="m-10 grid grid-cols-4 gap-5">
-      <div class="flex w-full flex-col gap-5">
-        <h1 class="text-xl font-bold">Filters</h1>
-        <div class="mb-3 font-semibold">
-          <h1 class="mb-2">Category</h1>
-          <div class="">
-            <label for="catCookies" class="flex flex-row gap-3">
-              <input
-                id="catCookies"
-                class="category"
-                type="checkbox"
-                value="cookies"
-              />
-              <p>Cookies</p>
-            </label>
-            <label for="catCandles" class="flex flex-row gap-3">
-              <input
-                id="catCandles"
-                class="category"
-                type="checkbox"
-                value="candles"
-              />
-              <p>Candles</p>
-            </label>
-            <label for="catOrnaments" class="flex flex-row gap-3">
-              <input
-                id="catOrnaments"
-                class="category"
-                type="checkbox"
-                value="ornaments"
-              />
-              <p>Ornaments</p>
-            </label>
-            <label for="catAccessories" class="flex flex-row gap-3">
-              <input
-                id="catAccessories"
-                class="category"
-                type="checkbox"
-                value="accessories"
-              />
-              <p>Accessories</p>
-            </label>
-          </div>
-        </div>
-        <div class="mb-3 font-semibold">
-          <h1 class="mb-2">Colors</h1>
-          <div class="">
-            <label for="colRed" class="flex flex-row gap-3">
-              <input id="colRed" class="color" type="checkbox" value="red" />
-              <p>Red</p>
-            </label>
-            <label for="colWhite" class="flex flex-row gap-3">
-              <input
-                id="colWhite"
-                class="color"
-                type="checkbox"
-                value="white"
-              />
-              <p>White</p>
-            </label>
-            <label for="colGreen" class="flex flex-row gap-3">
-              <input
-                id="colGreen"
-                class="color"
-                type="checkbox"
-                value="green"
-              />
-              <p>Green</p>
-            </label>
-            <label for="colBrown" class="flex flex-row gap-3">
-              <input
-                id="colBrown"
-                class="color"
-                type="checkbox"
-                value="brown"
-              />
-              <p>Brown</p>
-            </label>
-          </div>
-        </div>
-        <div class="mb-3 font-semibold">
-          <h1 class="mb-2">Size</h1>
-          <div class="">
-            <label for="sizeSm" class="flex flex-row gap-3">
-              <input id="sizeSm" class="size" type="checkbox" value="small" />
-              <p>Small</p>
-            </label>
-            <label for="sizeMd" class="flex flex-row gap-3">
-              <input id="sizeMd" class="size" type="checkbox" value="medium" />
-              <p>Medium</p>
-            </label>
-            <label for="sizeLg" class="flex flex-row gap-3">
-              <input id="sizeLg" class="size" type="checkbox" value="large" />
-              <p>Large</p>
-            </label>
-          </div>
-        </div>
+  <Container>
+    <div
+      class="mb-20 mt-10 flex flex-col items-center justify-center gap-8 bg-[#FFFFFF] px-10 text-[#181028]"
+    >
+      <div class="text-center">
+        <h1 class="pb-3 text-3xl font-bold">Christmas Shop</h1>
+        <p class="px-10 text-center text-sm">
+          Dive into the enchanting world of our Christmas shop, where festive
+          wonders come to life.
+        </p>
+        <p class="px-10 text-center text-sm">
+          Explore delightful decorations & gifts, unwrap joy and make this
+          season unforgettable!
+        </p>
       </div>
-      <div
-        id="productContainer"
-        class="col-span-3 grid w-full max-w-3xl grid-cols-1 place-items-start gap-3 bg-white text-[#181028] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-      >
-        <button
-          type="button"
-          v-for="product in storeProducts"
-          class="productButton group w-full"
-          data-id="${prod.id}"
-        >
+      <div class="m-10 grid grid-cols-3 gap-5 xl:grid-cols-4">
+        <div class="col-span-3 flex w-full flex-col gap-5 xl:col-span-1">
+          <h1 class="text-xl font-bold">Filters</h1>
           <div
-            :class="`relative mb-3 flex w-full flex-col items-center justify-center border-4 border-b-0 border-[#F8FAFC] bg-[#F8FAFC] pt-10 duration-300 ${
-              product.discount
-                ? 'group-hover:border-[#E55952]'
-                : 'group-hover:border-[#227293]'
-            }`"
+            class="mb-3 flex flex-row flex-wrap gap-5 md:gap-10 xl:flex-col xl:gap-5"
           >
+            <!-- Loop through filter categories -->
             <div
-              :class="{
-                'absolute left-0 top-0 px-3 py-1 uppercase text-white': true,
-                'bg-[#E55952]': product.discount,
-                'bg-[#227293]': product.new,
-                hidden: !product.new && !product.discount,
-              }"
+              v-for="(filterCategory, categoryIndex) in filters"
+              :key="categoryIndex"
             >
-              {{
-                product.discount ? product.discount : product.new ? "NEW" : ""
-              }}
-            </div>
-            <div class="flex h-32 items-center justify-center">
-              <img :src="String(product.url)" :alt="product.name" />
-            </div>
-            <div
-              :class="{
-                'w-full border-b-4 duration-300': true,
-                'added border-[#CEE6FC] bg-[#CEE6FC] text-black': product.added,
-                'group-hover:border-[#E55952]': product.discount,
-                'bg-[#E55952]': product.discount && !product.added,
-                'group-hover:border-[#227293]': !product.discount,
-                'bg-[#227293]': !product.discount && !product.added,
-                'border-[#F8FAFC] text-white opacity-0 group-hover:opacity-100':
-                  !product.added,
-                'mx-[4px] flex items-center justify-center gap-2 pb-1 pt-2 font-semibold': true,
-              }"
-            >
-              {{ product.added ? "Added to Cart" : `Add to Cart ` }}
-              <i v-if="product.added" class="fa-solid fa-gifts"></i>
-            </div>
-          </div>
-          <div class="space-y-1">
-            <p class="text-sm font-semibold">{{ product.name }}</p>
-            <p class="text-xl font-semibold">
-              ${{ product.discount ? product.discountPrice : product.price }}
-              <span
-                v-if="product.discount"
-                class="text-sm text-zinc-500 line-through"
-                >${{ product.price }}</span
+              <h2 class="font-semibold">{{ filterCategory.title }}</h2>
+              <!-- Loop through items in the current filter category -->
+              <label
+                v-for="(filterItem, itemIndex) in filterCategory.items"
+                :key="itemIndex"
+                :for="`${filterCategory.type}${filterItem.value}`"
+                class="flex select-none flex-row items-center gap-3"
               >
-            </p>
+                <input
+                  :id="`${filterCategory.type}${filterItem.value}`"
+                  class="focus:ring-0"
+                  type="checkbox"
+                  :value="filterItem.value"
+                  v-model="selectedFilters[filterCategory.type]"
+                  @change="updateFilteredProducts()"
+                />
+                <p>{{ filterItem.label }}</p>
+              </label>
+            </div>
           </div>
-        </button>
+        </div>
+        <div
+          id="productContainer"
+          class="col-span-3 grid w-full max-w-3xl grid-cols-1 place-items-start gap-3 bg-white text-[#181028] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+        >
+          <button
+            type="button"
+            v-for="product in filteredProducts"
+            :key="product.id"
+            class="productButton group w-full"
+            @click="setAddedProduct(product)"
+          >
+            <div class="relative mb-3 overflow-hidden rounded-md bg-[#f2f5f8]">
+              <div
+                :class="{
+                  'absolute left-0 top-0 px-3 py-1 uppercase text-white': true,
+                  'bg-[#E55952]': product.discount,
+                  'bg-[#227293]': product.new,
+                  hidden: !product.new && !product.discount,
+                }"
+              >
+                {{
+                  product.discount ? product.discount : product.new ? "NEW" : ""
+                }}
+              </div>
+              <div
+                :class="`relative flex w-full flex-col items-center justify-center border-4 border-b-0 border-[#f2f5f8] bg-[#f2f5f8] pt-10 duration-300 ${
+                  product.discount
+                    ? 'group-hover:border-[#E55952]'
+                    : 'group-hover:border-[#227293]'
+                }`"
+              >
+                <div class="flex h-32 items-center justify-center">
+                  <img :src="String(product.url)" :alt="product.name" />
+                </div>
+              </div>
+              <div
+                :class="{
+                  'relative w-full text-white duration-300': true,
+                  'added border-[#CEE6FC]': product.added,
+                  'bg-[#E55952] group-hover:border-[#E55952]': product.discount,
+                  'bg-[#227293] group-hover:border-[#227293]':
+                    !product.discount,
+                  'border-[#f2f5f8] text-white opacity-0 group-hover:opacity-100':
+                    !product.added,
+                  'flex items-center justify-center gap-2 py-2 font-semibold': true,
+                }"
+              >
+                {{ product.added ? "Added to Cart" : `Add to Cart ` }}
+                <i v-if="product.added" class="fa-solid fa-gifts"></i>
+              </div>
+            </div>
+            <div class="space-y-1">
+              <p class="text-sm font-semibold">{{ product.name }}</p>
+              <p class="text-xl font-semibold">
+                ${{ product.discount ? product.discountPrice : product.price }}
+                <span
+                  v-if="product.discount"
+                  class="text-sm text-zinc-500 line-through"
+                  >${{ product.price }}</span
+                >
+              </p>
+            </div>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+  </Container>
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue";
-import { products } from "../assets/products.ts";
+  import { onMounted, ref } from "vue";
+  import { filters, products } from "../assets/products.ts";
+  import Container from "../components/Container.vue";
 
-type Product = (typeof products)[number] & {
-  added: boolean;
-};
+  type Product = (typeof products)[number] & {
+    added: boolean;
+  };
 
-const storeProducts = computed(() => {
-  // Get the first 3 products as featured products
-  const storeProds = products.map((product) => ({ ...product, added: false }));
-  storeProds[0].added = true;
-  return storeProds;
-});
+  const storeProducts = ref<Product[]>([]);
 
-const activeProduct = ref<Product | null>(null);
-
-const setActiveProduct = (clickedProduct: Product) => {
-  storeProducts.value.forEach((product) => {
-    product.added = product === clickedProduct;
+  type SelectedFilters = {
+    [key: string]: (string | number)[];
+  };
+  const selectedFilters = ref<SelectedFilters>({
+    category: [],
+    color: [],
+    size: [],
   });
 
-  activeProduct.value = clickedProduct;
-};
+  onMounted(() => {
+    storeProducts.value = products.map((product) => ({
+      ...product,
+      added: false,
+    }));
+    filteredProducts.value = storeProducts.value;
+  });
 
-onMounted(() => {
-  if (storeProducts.value.length > 0) {
-    setActiveProduct(storeProducts.value[0]);
-  }
-});
+  const setAddedProduct = (clickedProduct: Product) => {
+    clickedProduct.added = !clickedProduct.added;
+  };
+
+  const filteredProducts = ref<Product[]>([]);
+  const updateFilteredProducts = () => {
+    filteredProducts.value = storeProducts.value.filter((product) => {
+      return Object.keys(selectedFilters.value).every((filterType) => {
+        const selectedValues = selectedFilters.value[filterType];
+        return (
+          selectedValues.length === 0 ||
+          selectedValues.some((value) =>
+            (product[filterType as keyof Product] as string[]).includes(
+              value as string,
+            ),
+          )
+        );
+      });
+    });
+  };
 </script>

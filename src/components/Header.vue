@@ -73,7 +73,7 @@
                 class="h-[1px] w-0 bg-zinc-500 duration-300 group-hover:w-full"
               ></div></button
           ></router-link>
-          <router-link to="/"
+          <router-link :to="{ name: 'faq' }"
             ><button
               type="button"
               class="group flex flex-col items-center justify-center font-semibold"

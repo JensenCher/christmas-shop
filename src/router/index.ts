@@ -4,6 +4,7 @@ import Featured from "../views/Featured.vue"
 import TodoHome from "../views/TodoHome.vue"
 import ProductList from "../views/ProductList.vue"
 import Shop from "../views/Shop.vue"
+import FrequentAQVue from "../views/FrequentAQ.vue"
 
 const routes = [
     {
@@ -20,6 +21,11 @@ const routes = [
         path: '/shop',
         name: 'shop',
         component: Shop,
+    },
+    {
+        path: '/faq',
+        name: 'faq',
+        component: FrequentAQVue,
     },
     {
         path: '/letter/:letter',

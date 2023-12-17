@@ -9,6 +9,9 @@ interface ProductProps {
   discountPrice: number | null,
   added: boolean,
   new: boolean,
+  category: string[],
+  color: string[],
+  size: string[],
 }
 
 export const products: ProductProps[] = [
@@ -23,6 +26,9 @@ export const products: ProductProps[] = [
     discountPrice: null,
     added: false,
     new: true,
+    category: ['ornaments'],
+    color: ['green'],
+    size: ['large'],
   },
   {
     id: 2,
@@ -35,6 +41,9 @@ export const products: ProductProps[] = [
     discountPrice: 9.99,
     added: false,
     new: false,
+    category: ['ornaments'],
+    color: ['red', 'white'],
+    size: ['medium'],
   },
   {
     id: 3,
@@ -47,6 +56,9 @@ export const products: ProductProps[] = [
     discountPrice: null,
     added: true,
     new: false,
+    category: ['cookies', 'ornaments'],
+    color: ['brown'],
+    size: ['small'],
   },
   {
     id: 4,
@@ -59,6 +71,9 @@ export const products: ProductProps[] = [
     discountPrice: null,
     added: false,
     new: false,
+    category: ['ornaments'],
+    color: ['white'],
+    size: ['small'],
   },
   {
     id: 5,
@@ -71,6 +86,9 @@ export const products: ProductProps[] = [
     discountPrice: null,
     added: false,
     new: false,
+    category: ['cookies', 'ornaments'],
+    color: ['brown'],
+    size: ['small'],
   },
   {
     id: 6,
@@ -83,6 +101,9 @@ export const products: ProductProps[] = [
     discountPrice: null,
     added: false,
     new: false,
+    category: ['accessories'],
+    color: ['red', 'white'],
+    size: ['medium'],
   },
   {
     id: 7,
@@ -95,6 +116,9 @@ export const products: ProductProps[] = [
     discountPrice: null,
     added: false,
     new: false,
+    category: ['candles', 'ornaments'],
+    color: ['red', 'white'],
+    size: ['large'],
   },
   {
     id: 8,
@@ -107,6 +131,9 @@ export const products: ProductProps[] = [
     discountPrice: null,
     added: false,
     new: false,
+    category: ['candles', 'ornaments'],
+    color: ['red', 'white'],
+    size: ['large'],
   },
   {
     id: 9,
@@ -119,6 +146,9 @@ export const products: ProductProps[] = [
     discountPrice: null,
     added: false,
     new: false,
+    category: ['ornaments'],
+    color: ['red', 'white'],
+    size: ['small'],
   },
   {
     id: 10,
@@ -131,6 +161,9 @@ export const products: ProductProps[] = [
     discountPrice: null,
     added: false,
     new: false,
+    category: ['ornaments'],
+    color: ['red', 'white'],
+    size: ['medium'],
   },
   {
     id: 11,
@@ -143,6 +176,9 @@ export const products: ProductProps[] = [
     discountPrice: null,
     added: false,
     new: false,
+    category: ['accessories'],
+    color: ['red'],
+    size: ['small'],
   },
   {
     id: 12,
@@ -155,5 +191,51 @@ export const products: ProductProps[] = [
     discountPrice: null,
     added: false,
     new: false,
+    category: ['cookies', 'ornaments'],
+    color: ['red', 'green', 'white', 'brown'],
+    size: ['small'],
+  },
+];
+
+export type FilterProps = {
+  label: string;
+  value: string | number;
+};
+
+export interface FilterCategory {
+  type: string;
+  title: string;
+  items: FilterProps[];
+}
+
+export const filters: FilterCategory[] = [
+  {
+    type: 'category',
+    title: 'Category',
+    items: [
+      { label: 'Cookies', value: 'cookies' },
+      { label: 'Candles', value: 'candles' },
+      { label: 'Ornaments', value: 'ornaments' },
+      { label: 'Accessories', value: 'accessories' },
+    ],
+  },
+  {
+    type: 'color',
+    title: 'Color',
+    items: [
+      { label: 'Red', value: 'red' },
+      { label: 'White', value: 'white' },
+      { label: 'Green', value: 'green' },
+      { label: 'Brown', value: 'brown' },
+    ],
+  },
+  {
+    type: 'size',
+    title: 'Size',
+    items: [
+      { label: 'Small', value: 'small' },
+      { label: 'Medium', value: 'medium' },
+      { label: 'Large', value: 'large' },
+    ],
   },
 ];

@@ -25,29 +25,29 @@
               </p>
             </div>
             <div class="text-xs text-zinc-300">
-              &copy;2023 iCodeThis. All Rights Reserved.
+              &copy;2023 Jensen Cher. All Rights Reserved.
             </div>
           </div>
           <div class="flex flex-col items-start justify-start gap-5">
             <h1 class="text-xl font-bold">Products</h1>
             <ul class="flex flex-col items-start justify-start gap-3">
               <li
-                class="cursor-pointer list-none font-semibold text-zinc-400 duration-500 hover:text-white"
+                class="cursor-pointer list-none text-zinc-300 duration-500 hover:text-white"
               >
                 Cookies
               </li>
               <li
-                class="cursor-pointer list-none font-semibold text-zinc-400 duration-500 hover:text-white"
+                class="cursor-pointer list-none text-zinc-300 duration-500 hover:text-white"
               >
                 Candles
               </li>
               <li
-                class="cursor-pointer list-none font-semibold text-zinc-400 duration-500 hover:text-white"
+                class="cursor-pointer list-none text-zinc-300 duration-500 hover:text-white"
               >
                 Ornaments
               </li>
               <li
-                class="cursor-pointer list-none font-semibold text-zinc-400 duration-500 hover:text-white"
+                class="cursor-pointer list-none text-zinc-300 duration-500 hover:text-white"
               >
                 Accessories
               </li>
@@ -57,17 +57,17 @@
             <h1 class="text-xl font-bold">Client</h1>
             <ul class="flex flex-col items-start justify-start gap-3">
               <li
-                class="cursor-pointer list-none font-semibold text-zinc-400 duration-500 hover:text-white"
+                class="cursor-pointer list-none text-zinc-300 duration-500 hover:text-white"
               >
                 Find a store
               </li>
               <li
-                class="cursor-pointer list-none font-semibold text-zinc-400 duration-500 hover:text-white"
+                class="cursor-pointer list-none text-zinc-300 duration-500 hover:text-white"
               >
                 Newsletter
               </li>
               <li
-                class="cursor-pointer list-none font-semibold text-zinc-400 duration-500 hover:text-white"
+                class="cursor-pointer list-none text-zinc-300 duration-500 hover:text-white"
               >
                 Cookies Policy
               </li>
@@ -77,17 +77,17 @@
             <h1 class="text-xl font-bold">About</h1>
             <ul class="flex flex-col items-start justify-start gap-3">
               <li
-                class="cursor-pointer list-none font-semibold text-zinc-400 duration-500 hover:text-white"
+                class="cursor-pointer list-none text-zinc-300 duration-500 hover:text-white"
               >
                 Find a store
               </li>
               <li
-                class="cursor-pointer list-none font-semibold text-zinc-400 duration-500 hover:text-white"
+                class="cursor-pointer list-none text-zinc-300 duration-500 hover:text-white"
               >
                 Return policy
               </li>
               <li
-                class="cursor-pointer list-none font-semibold text-zinc-400 duration-500 hover:text-white"
+                class="cursor-pointer list-none text-zinc-300 duration-500 hover:text-white"
               >
                 Contact
               </li>
